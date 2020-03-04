@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col s12">
+        <h1>Datos del Contacto</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s6">
+        <img src="../assets/images/contacto2.png">
+    </div>
+    <form class="col s6" [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="nombre" id="nombre" type="text" class="validate">
+                <label for="nombre">{{ contacto?.nombre }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="tel" id="tel" type="text" class="validate">
+                <label for="tel">{{ contacto?.tel }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled formControlName="correo" id="correo" type="text" class="validate">
+                <label for="correo">{{ contacto?.correo }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="waves-effect waves-light btn-large">Actualizar</button>
+            </div>
+        </div>
+    </form>
+</div>

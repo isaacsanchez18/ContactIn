@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col s3" *ngFor="let contacto of contactos">
+        <div class="card">
+            <div class="card-image">
+                <img src="../assets/images/contacto2.png">
+                <!-- <span class="card-title">Card Title</span> -->
+            </div>
+            <div class="card-content">
+                <h5> {{ contacto.nombre }}</h5>
+                <p> {{ contacto.tel }}</p>
+                <p> {{ contacto.correo }}</p>
+            </div>
+            <div class="card-action">
+                <a [routerLink]="['contactos', contacto.id]">Editar Contacto</a>
+            </div>
+        </div>
+    </div>
+</div>
