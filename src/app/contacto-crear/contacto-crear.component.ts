@@ -4,6 +4,8 @@ import { ContactoService } from '../services/contacto.service';
 import { Router } from '@angular/router';
 import { Contacto } from 'src/models/contacto.model';
 
+declare let $: any;
+
 @Component({
   selector: 'app-contacto-crear',
   templateUrl: './contacto-crear.component.html',
@@ -11,12 +13,14 @@ import { Contacto } from 'src/models/contacto.model';
 })
 export class ContactoCrearComponent implements OnInit {
 
+  contactos: Contacto[];
   contactoForm: FormGroup;
   constructor(private contactoService: ContactoService,
               private router: Router) { }
 
   ngOnInit() {
     this.initForm();
+    $('.modal').modal();
   }
 
   initForm() {
@@ -29,22 +33,20 @@ export class ContactoCrearComponent implements OnInit {
   }
 
   onSubmit() {
+    this.contactos = this.contactoService.contactos;
     if (this.contactoForm.valid) {
       const nuevoContacto: Contacto = {
         ...this.contactoForm.value
       };
-
       this.contactoService.agregarContacto(nuevoContacto).then((result) => {
         this.router.navigate(['']);
       }).catch((error) => {
         console.log(error);
       });
       console.log(nuevoContacto);
-      //if (nuevoContacto.id === this.contactoService.contactos.find(contacto.id));
+
     } else {
       alert('Completa todos los campos');
     }
-
   }
-
 }

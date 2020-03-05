@@ -11,6 +11,9 @@ import { ContactoService } from '../services/contacto.service';
 })
 export class ContactoDetalleComponent implements OnInit {
 
+  show = false;
+
+  contactos: Contacto[];
   contacto: Contacto;
   contactoForm: FormGroup;
   constructor(private activatedRoute: ActivatedRoute,
@@ -21,6 +24,7 @@ export class ContactoDetalleComponent implements OnInit {
     const contactoId = this.activatedRoute.snapshot.paramMap.get('contactoId');
     this.obtContacto(contactoId);
     this.initForm();
+    this.obtContactos();
   }
 
   initForm() {
@@ -47,6 +51,21 @@ export class ContactoDetalleComponent implements OnInit {
     });
   }
 
+  obtContactos() {
+    this.contactoService.obtContactos().then((contactos: Contacto[]) => {
+      this.contactos = contactos;
+    });
+  }
+
+  borrarContacto(contactoId: string) {
+    this.contactoService.borrarContacto(contactoId).then((result) => {
+      this.obtContactos();
+      this.router.navigate(['']);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   onSubmit() {
     if (this.contactoForm.valid) {
       const contactoActualizado: Contacto = {
@@ -64,4 +83,7 @@ export class ContactoDetalleComponent implements OnInit {
     }
   }
 
+  validar() {
+    this.show = true;
+  }
 }

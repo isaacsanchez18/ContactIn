@@ -86,6 +86,7 @@ export class ContactoService {
 
   agregarContacto(contacto: Contacto): Promise<boolean> {
     return new Promise((resolve, reject) => {
+      //if (this.obtContacto(this.contactos.id) !== contacto.id)
       this.contactos.push(contacto);
       resolve(true);
     });

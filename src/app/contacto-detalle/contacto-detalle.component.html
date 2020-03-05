@@ -3,8 +3,38 @@
         <h1>Datos del Contacto</h1>
     </div>
 </div>
-
-<div class="row">
+<div class="row" *ngIf="show==false">
+    <div class="col s6">
+        <img src="../assets/images/contacto2.png">
+    </div>
+    <form class="col s6" [formGroup]="contactoForm">
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled formControlName="nombre" id="nombre" type="text" class="validate">
+                <label class="active" for="nombre">Nombre</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled formControlName="tel" id="tel" type="text" class="validate">
+                <label class="active" for="tel">Telefono</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input disabled formControlName="correo" id="correo" type="text" class="validate">
+                <label class="active " for="correo">Correo electronico</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="waves-effect waves-light btn-large btn-edit" (click)="validar(show)">Editar</button>
+                <button class="waves-effect waves-light btn-large btn-del" (click)="borrarContacto(contacto?.id)">Borrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row" *ngIf="show">
     <div class="col s6">
         <img src="../assets/images/contacto2.png">
     </div>
@@ -12,24 +42,25 @@
         <div class="row">
             <div class="input-field col s12">
                 <input formControlName="nombre" id="nombre" type="text" class="validate">
-                <label for="nombre">{{ contacto?.nombre }}</label>
+                <label class="active" for="nombre">Nombre</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <input formControlName="tel" id="tel" type="text" class="validate">
-                <label for="tel">{{ contacto?.tel }}</label>
+                <label class="active" for="tel">Telefono</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input disabled formControlName="correo" id="correo" type="text" class="validate">
-                <label for="correo">{{ contacto?.correo }}</label>
+                <input formControlName="correo" id="correo" type="text" class="validate">
+                <label class="active" for="correo">Correo electronico</label>
             </div>
         </div>
         <div class="row">
             <div class="col s12">
-                <button class="waves-effect waves-light btn-large">Actualizar</button>
+                <button class="waves-effect waves-light btn-large btn-act">Actualizar</button>
+                <button [routerLink]="['']" class="waves-effect waves-light btn-large btn-del">Cancelar</button>
             </div>
         </div>
     </form>
