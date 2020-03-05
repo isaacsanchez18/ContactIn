@@ -35,18 +35,9 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <button class="waves-effect waves-light btn-large btn-crear" href="#modal">Crear</button>
+                <button data-target="myModal" class="waves-effect waves-light btn-large btn-crear modal-trigger">Crear</button>
                 <button [routerLink]="['']" class="waves-effect waves-light btn-large btn-del">Cancelar</button>
             </div>
         </div>
     </form>
-</div>
-<!-- Modal Structure -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <h5>Creado...</h5>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat btn-cancelar">Ok</a>
-    </div>
 </div>

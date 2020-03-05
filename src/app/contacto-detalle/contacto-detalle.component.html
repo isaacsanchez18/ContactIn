@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col s12">
                 <button class="waves-effect waves-light btn-large btn-edit" (click)="validar(show)">Editar</button>
-                <button class="waves-effect waves-light btn-large btn-del" (click)="borrarContacto(contacto?.id)">Borrar</button>
+                <button data-target="myModal1" class="waves-effect waves-light btn-large btn-del modal-trigger">Borrar</button>
             </div>
         </div>
     </form>
@@ -64,4 +64,24 @@
             </div>
         </div>
     </form>
+</div>
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Se borrara este contacto</h4>
+            </div>
+            <div class="modal-body">
+                <p>Esta seguro?</p>
+            </div>
+            <div class="modal-footer">
+                <button [routerLink]="['']" type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button (click)="borrarContacto(contacto?.id)" [routerLink]="['']" type="button" class="btn btn-default red" data-dismiss="modal">Si</button>
+            </div>
+        </div>
+
+    </div>
 </div>

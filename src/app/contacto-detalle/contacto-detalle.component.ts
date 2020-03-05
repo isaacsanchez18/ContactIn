@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactoService } from '../services/contacto.service';
 
+declare let $: any;
+
 @Component({
   selector: 'app-contacto-detalle',
   templateUrl: './contacto-detalle.component.html',
@@ -25,6 +27,9 @@ export class ContactoDetalleComponent implements OnInit {
     this.obtContacto(contactoId);
     this.initForm();
     this.obtContactos();
+    $(document).ready(function() {
+      $('.modal').modal();
+    });
   }
 
   initForm() {

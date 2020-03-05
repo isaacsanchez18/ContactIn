@@ -20,7 +20,6 @@ export class ContactoCrearComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    $('.modal').modal();
   }
 
   initForm() {
